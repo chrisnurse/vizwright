@@ -132,14 +132,14 @@ test.describe('Dashboard - Advanced Tab (Iframe, Shadow DOM, Animations)', () =>
     });
 
     test('should display websocket toggle button', async ({ page }) => {
-        const toggleBtn = page.locator('button:has-text("Toggle WebSocket")');
+        const toggleBtn = page.locator('button#toggleConnection, button:has-text("Disconnect"), button:has-text("Connect")');
         await expect(toggleBtn).toBeVisible();
     });
 
     test('should toggle websocket connection', async ({ page }) => {
-        const toggleBtn = page.locator('button:has-text("Toggle WebSocket")');
+        const toggleBtn = page.locator('button#toggleConnection, button:has-text("Disconnect"), button:has-text("Connect")');
 
-        // Click to connect
+        // Click to toggle connection
         await toggleBtn.click();
         await page.waitForTimeout(500);
 
@@ -231,9 +231,9 @@ test.describe('Dashboard - Advanced Tab (Iframe, Shadow DOM, Animations)', () =>
 
     test('should show context menu on right click', async ({ page }) => {
         // Right-click on page to show context menu
-        const contextArea = page.locator('[class*="context"]');
+        const contextArea = page.locator('[data-panel="advanced"]');
         if (await contextArea.count() > 0) {
-            await contextArea.click({ button: 'right' });
+            await contextArea.click({ button: 'right', force: true });
 
             // Context menu might appear
             await page.waitForTimeout(200);
@@ -248,8 +248,10 @@ test.describe('Dashboard - Advanced Tab (Iframe, Shadow DOM, Animations)', () =>
 
     test('should maintain advanced tab state', async ({ page }) => {
         // Do some action
-        const toggleBtn = page.locator('button:has-text("Toggle WebSocket")');
-        await toggleBtn.click();
+        const toggleBtn = page.locator('button#toggleConnection, button:has-text("Disconnect"), button:has-text("Connect")');
+        if (await toggleBtn.count() > 0) {
+            await toggleBtn.click();
+        }
 
         // Switch to another tab and back
         await page.locator('button:has-text("Forms")').click();

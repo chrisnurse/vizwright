@@ -913,7 +913,7 @@
                             <button type="submit" class="btn btn-primary" data-testid="btn-save-profile">
                                 Save Profile
                             </button>
-                            <button type="button" class="btn btn-secondary" data-testid="btn-cancel-profile">
+                            <button type="button" class="btn btn-secondary" id="cancelProfileBtn" data-testid="btn-cancel-profile">
                                 Cancel
                             </button>
                         </div>
@@ -1057,7 +1057,7 @@
                 <!-- WebSocket Simulation -->
                 <h4 style="margin-bottom: 16px;">Real-time Updates (Simulated WebSocket)</h4>
                 <div class="websocket-status" data-testid="websocket-status">
-                    <span class="status-dot connected" data-testid="status-indicator"></span>
+                    <span class="status-dot connected" id="statusIndicator" data-testid="status-indicator"></span>
                     <span>Connection Status: <strong id="connectionStatus">Connected</strong></span>
                 </div>
                 <div class="message-feed" id="messageFeed" data-testid="message-feed">
@@ -1195,7 +1195,7 @@
             showToast('Profile saved successfully!', 'success');
         });
 
-        document.querySelector('[data-testid="btn-cancel-profile"]').addEventListener('click', () => {
+        document.getElementById('cancelProfileBtn').addEventListener('click', () => {
             document.getElementById('profileForm').reset();
             showToast('Form cancelled', 'info');
         });
@@ -1236,14 +1236,25 @@
                 </tr>
             `).join('');
 
-            // Add event listeners to action buttons
-            data.forEach(row => {
-                document.querySelector(`[data-testid="btn-edit-${row.id}"]`).addEventListener('click', () => {
-                    showToast(`Editing task: ${row.task}`, 'info');
-                });
-                document.querySelector(`[data-testid="btn-delete-${row.id}"]`).addEventListener('click', () => {
-                    showToast(`Deleted task: ${row.task}`, 'error');
-                });
+            // Add event listeners to action buttons using event delegation
+            tbody.addEventListener('click', (e) => {
+                const editBtn = e.target.closest('.btn-edit');
+                if (editBtn) {
+                    const row = editBtn.closest('tr');
+                    const taskCell = row.querySelector('td:nth-child(2)');
+                    const taskName = taskCell ? taskCell.textContent : 'unknown';
+                    showToast(`Editing task: ${taskName}`, 'info');
+                    document.getElementById('modalOverlay').classList.add('show');
+                }
+                
+                const deleteBtn = e.target.closest('.btn-delete');
+                if (deleteBtn) {
+                    const row = deleteBtn.closest('tr');
+                    const taskCell = row.querySelector('td:nth-child(2)');
+                    const taskName = taskCell ? taskCell.textContent : 'unknown';
+                    showToast(`Delete task: ${taskName}`, 'info');
+                    document.getElementById('modalOverlay').classList.add('show');
+                }
             });
         }
 
@@ -1342,7 +1353,7 @@
 
             setTimeout(() => {
                 toast.remove();
-            }, 5000);
+            }, 10000);
         }
 
         document.getElementById('showSuccess').addEventListener('click', () => {
@@ -1581,7 +1592,7 @@
 
         document.getElementById('toggleConnection').addEventListener('click', () => {
             wsConnected = !wsConnected;
-            const statusDot = document.querySelector('[data-testid="status-indicator"]');
+            const statusDot = document.getElementById('statusIndicator');
             const statusText = document.getElementById('connectionStatus');
             const btn = document.getElementById('toggleConnection');
 

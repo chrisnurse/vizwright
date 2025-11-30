@@ -227,7 +227,7 @@ test.describe('Dashboard - Table Tab', () => {
 
     test('should display active status badge', async ({ page }) => {
         const table = page.locator('table');
-        const activeBadge = table.locator('[class*="badge"][class*="success"]');
+        const activeBadge = table.locator('[class*="status-badge"][class*="active"]').first();
         await expect(activeBadge).toBeVisible();
     });
 

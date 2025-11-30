@@ -132,16 +132,17 @@ test.describe('Dashboard - Forms Tab', () => {
 
         // Fill form
         const inputs = form.locator('input');
-        inputs.nth(0).fill('John Doe');
-        inputs.nth(1).fill('john@example.com');
-        form.locator('select').nth(0).selectOption('developer');
-        form.locator('select').nth(1).selectOption('engineering');
-        form.locator('textarea').fill('Software engineer');
+        await inputs.nth(0).fill('John Doe');
+        await inputs.nth(1).fill('john@example.com');
+        await form.locator('select').nth(0).selectOption('developer');
+        await form.locator('select').nth(1).selectOption('engineering');
+        await form.locator('textarea').fill('Software engineer');
 
         // Submit form
-        form.locator('button').filter({ hasText: 'Save' }).click();
+        await form.locator('button').filter({ hasText: 'Save Profile' }).click();
 
-        // Check for success toast
+        // Check for success toast - wait for it to appear
+        await page.waitForSelector('[class*="toast"][class*="success"]', { timeout: 5000 });
         await expect(page.locator('[class*="toast"][class*="success"]')).toBeVisible();
     });
 
@@ -165,9 +166,8 @@ test.describe('Dashboard - Forms Tab', () => {
         // Click components tab to access dependent dropdowns
         await page.locator('button:has-text("Components")').click();
 
-        const selects = page.locator('select');
-        const countrySelect = selects.nth(0);
-        const citySelect = selects.nth(1);
+        const countrySelect = page.locator('select#country');
+        const citySelect = page.locator('select#city');
 
         // City should be disabled initially
         await expect(citySelect).toBeDisabled();
@@ -187,9 +187,8 @@ test.describe('Dashboard - Forms Tab', () => {
         // Click components tab
         await page.locator('button:has-text("Components")').click();
 
-        const selects = page.locator('select');
-        const countrySelect = selects.nth(0);
-        const citySelect = selects.nth(1);
+        const countrySelect = page.locator('select#country');
+        const citySelect = page.locator('select#city');
 
         await countrySelect.selectOption('usa');
 
@@ -204,9 +203,8 @@ test.describe('Dashboard - Forms Tab', () => {
         // Click components tab
         await page.locator('button:has-text("Components")').click();
 
-        const selects = page.locator('select');
-        const countrySelect = selects.nth(0);
-        const citySelect = selects.nth(1);
+        const countrySelect = page.locator('select#country');
+        const citySelect = page.locator('select#city');
 
         await countrySelect.selectOption('uk');
 
@@ -221,9 +219,8 @@ test.describe('Dashboard - Forms Tab', () => {
         // Click components tab
         await page.locator('button:has-text("Components")').click();
 
-        const selects = page.locator('select');
-        const countrySelect = selects.nth(0);
-        const citySelect = selects.nth(1);
+        const countrySelect = page.locator('select#country');
+        const citySelect = page.locator('select#city');
 
         await countrySelect.selectOption('usa');
         await citySelect.selectOption('new-york');

@@ -25,8 +25,8 @@ test.describe('Dashboard - Advanced Tab (Drag & Drop, File Upload)', () => {
     });
 
     test('should drag item from source to target', async ({ page }) => {
-        const dragItem = page.locator('[class*="drag-item"]').first();
-        const dragTarget = page.locator('[class*="drag-target"]');
+        const dragItem = page.locator('[class*="draggable-item"]').first();
+        const dragTarget = page.locator('#targetZone');
 
         // Perform drag and drop
         await dragItem.dragTo(dragTarget);
@@ -133,18 +133,18 @@ test.describe('Dashboard - Advanced Tab (Drag & Drop, File Upload)', () => {
     });
 
     test('should display color picker', async ({ page }) => {
-        const colorPicker = page.locator('input[type="color"]');
+        const colorPicker = page.locator('.color-option').first();
         await expect(colorPicker).toBeVisible();
     });
 
     test('should change color with color picker', async ({ page }) => {
-        const colorPicker = page.locator('input[type="color"]');
+        const colorOption = page.locator('[data-color="#f56565"]').first();
 
-        // Change color
-        await colorPicker.fill('#ff0000');
+        // Click on a color option (red)
+        await colorOption.click();
 
-        // Verify color value changed
-        await expect(colorPicker).toHaveValue('#ff0000');
+        // Verify color option is selected (has active class)
+        await expect(colorOption).toHaveClass(/active/);
     });
 
     test('should display clear button', async ({ page }) => {
@@ -192,14 +192,14 @@ test.describe('Dashboard - Advanced Tab (Drag & Drop, File Upload)', () => {
     });
 
     test('should display multiple drag items', async ({ page }) => {
-        const dragItems = page.locator('[class*="drag-item"]');
+        const dragItems = page.locator('[class*="draggable-item"]');
         const count = await dragItems.count();
         expect(count).toBeGreaterThan(0);
     });
 
     test('should allow dragging multiple items', async ({ page }) => {
-        const dragItems = page.locator('[class*="drag-item"]');
-        const dragTarget = page.locator('[class*="drag-target"]');
+        const dragItems = page.locator('[class*="draggable-item"]');
+        const dragTarget = page.locator('#targetZone');
 
         const count = await dragItems.count();
 
