@@ -1,1 +1,3 @@
-# This folder contains technically simple but visually complex sample applications for testing purposes.
+# About this folder
+
+This folder contains technically simple but visually complex sample applications for testing purposes.
