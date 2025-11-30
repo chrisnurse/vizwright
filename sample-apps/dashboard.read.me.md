@@ -91,47 +91,37 @@ A comprehensive testing playground with **117+ test scenarios** organized by int
 
 ### Pattern: Form Validation
 
-```
 1. Navigate to Forms tab
 2. Fill all inputs
 3. Click Save
-4. Toast appears with success message
-```
 
 ### Pattern: Table Operations
 
-```
 1. Navigate to Table tab
 2. Type in search box
 3. Click column header to sort
 4. Click Edit button on row
 5. Toast appears
-```
 
 ### Pattern: Drag and Drop
 
-```
 1. Navigate to Advanced tab
 2. Scroll to drag section
 3. Drag item from source to target
 4. Item moves
 5. Toast confirms success
-```
 
 ### Pattern: Context Menu
 
-```
 1. Navigate to Advanced tab
 2. Scroll to context menu section
 3. Right-click in designated area
 4. Menu appears at cursor
 5. Click menu item
 6. Toast appears, menu closes
-```
 
 ### Pattern: Multi-window
 
-```
 1. Navigate to Advanced tab
 2. Click "Open Popup Window"
 3. New window opens
@@ -139,7 +129,6 @@ A comprehensive testing playground with **117+ test scenarios** organized by int
 5. Click button in popup
 6. Parent receives postMessage
 7. Toast appears in parent
-```
 
 ---
 
