@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     testDir: './tests',
     fullyParallel: true,
     forbidOnly: !!process.env['CI'],

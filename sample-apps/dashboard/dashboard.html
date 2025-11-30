@@ -1252,7 +1252,7 @@
                     const row = deleteBtn.closest('tr');
                     const taskCell = row.querySelector('td:nth-child(2)');
                     const taskName = taskCell ? taskCell.textContent : 'unknown';
-                    showToast(`Delete task: ${taskName}`, 'info');
+                    showToast(`Deleted task: ${taskName}`, 'error');
                     document.getElementById('modalOverlay').classList.add('show');
                 }
             });
