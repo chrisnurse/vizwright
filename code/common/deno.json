@@ -1,0 +1,5 @@
+{
+    "imports": {
+        "@sinclair/typebox": "npm:@sinclair/typebox@^0.34"
+    }
+}

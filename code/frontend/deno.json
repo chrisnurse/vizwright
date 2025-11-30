@@ -1,0 +1,27 @@
+{
+  "name": "@vizwright/frontend",
+  "exports": "./src/main.ts",
+  "tasks": {
+    "dev": "deno run -A --node-modules-dir npm:vite",
+    "build": "deno run -A --node-modules-dir npm:vite build",
+    "preview": "deno run -A --node-modules-dir npm:vite preview",
+    "serve": "deno run --allow-net --allow-read jsr:@std/http@1/file-server dist/"
+  },
+  "compilerOptions": {
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ]
+  },
+  "imports": {
+    "@deno/vite-plugin": "npm:@deno/vite-plugin@^1.0.5",
+    "@vitejs/plugin-vue": "npm:@vitejs/plugin-vue@^5.2.0",
+    "vite": "npm:vite@^6",
+    "vue": "npm:vue@^3.5.21",
+    "vue-router": "npm:vue-router@^4",
+    "pinia": "npm:pinia@^2",
+    "primevue": "npm:primevue@^4",
+    "@primeuix/themes": "npm:@primeuix/themes@^1"
+  }
+}

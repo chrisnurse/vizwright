@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+deno.lock
+
+# Build outputs
+dist/
+*.exe
+
+# Temporary files
+tmp/
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+!.vscode/mcp.json
+!.vscode/settings.json
+!.vscode/tasks.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Vizwright config (user-specific)
+.vizwrightrc

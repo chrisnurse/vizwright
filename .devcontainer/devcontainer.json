@@ -1,0 +1,66 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.183.0/containers/deno
+{
+  "name": "vizwright-dev",
+  "dockerFile": "Dockerfile",
+  "remoteUser": "node",
+  "runArgs": [
+    "--init",
+    "--privileged",
+    "--add-host=host.docker.internal:host-gateway",
+    "--name",
+    "vizwright-dev"
+  ],
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2.12.4": {
+      "dockerSocketPath": "/var/run/docker.sock"
+    }
+  },
+  "mounts": [
+    "source=${localEnv:HOME}/.docker/desktop/docker.sock,target=/var/run/docker-host.sock,type=bind",
+    "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,consistency=cached"
+  ],
+  "customizations": {
+    "vscode": {
+      // Add the IDs of extensions you want installed when the container is created.
+      "extensions": [
+        "denoland.vscode-deno",
+        "github.vscode-github-actions",
+        "github.copilot",
+        "vue.volar",
+        "savh.json5-kit",
+        "crystal-spider.jsdoc-generator",
+        "shd101wyy.markdown-preview-enhanced",
+        "yzhang.markdown-all-in-one",
+        "mermaidchart.vscode-mermaid-chart",
+        "davidanson.vscode-markdownlint",
+        "ms-playwright.playwright"
+      ]
+    }
+  },
+  "forwardPorts": [
+    3000,
+    5173,
+    9323
+  ],
+  "remoteEnv": {
+    "PROJECT_ROOT": "${containerWorkspaceFolder}",
+    "PATH": "${containerWorkspaceFolder}/code/cli/dist:${containerEnv:PATH}"
+  },
+  "portsAttributes": {
+    "3000": {
+      "label": "Backend API",
+      "onAutoForward": "notify"
+    },
+    "5173": {
+      "label": "Frontend Dev Server",
+      "onAutoForward": "notify"
+    },
+    "9323": {
+      "label": "Playwright Test Report",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "postCreateCommand": "./.devcontainer/postCreateCommand.sh",
+  "postStartCommand": "./.devcontainer/postStartCommand.sh"
+}
