@@ -24,6 +24,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .navbar h1 {
@@ -58,9 +61,13 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 0 20px;
+        }
+
+        .welcome-section {
+            padding: 40px 0;
         }
 
         .welcome-card {
@@ -68,7 +75,6 @@
             border-radius: 12px;
             padding: 40px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 32px;
         }
 
         .welcome-card h2 {
@@ -83,10 +89,60 @@
             line-height: 1.6;
         }
 
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 8px;
+            background: white;
+            padding: 16px 16px 0 16px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 32px;
+        }
+
+        .tab {
+            padding: 12px 24px;
+            background: transparent;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            color: #666;
+            transition: all 0.3s;
+        }
+
+        .tab:hover {
+            color: #667eea;
+        }
+
+        .tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .tab-content {
+            background: white;
+            padding: 32px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 12px 12px;
+            min-height: 400px;
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        /* Stats Grid */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 24px;
+            margin-bottom: 32px;
         }
 
         .stat-card {
@@ -114,11 +170,648 @@
         .stat-card.blue { border-top: 4px solid #4299e1; }
         .stat-card.green { border-top: 4px solid #48bb78; }
         .stat-card.orange { border-top: 4px solid #ed8936; }
+
+        /* Forms */
+        .form-section {
+            max-width: 600px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group.checkbox {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-group.checkbox input {
+            width: auto;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #d0d0d0;
+        }
+
+        .btn-danger {
+            background: #f56565;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #e53e3e;
+        }
+
+        /* Table */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            padding: 10px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            width: 300px;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: #f5f7fa;
+        }
+
+        th {
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        th:hover {
+            background: #e8eaf0;
+        }
+
+        th.sortable::after {
+            content: ' ↕';
+            opacity: 0.3;
+        }
+
+        th.sort-asc::after {
+            content: ' ↑';
+            opacity: 1;
+        }
+
+        th.sort-desc::after {
+            content: ' ↓';
+            opacity: 1;
+        }
+
+        td {
+            padding: 16px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tr:hover {
+            background: #f9f9f9;
+        }
+
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-active {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+
+        .status-pending {
+            background: #fed7d7;
+            color: #742a2a;
+        }
+
+        .status-completed {
+            background: #bee3f8;
+            color: #2c5282;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-icon {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .btn-edit {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-edit:hover {
+            background: #5568d3;
+        }
+
+        .btn-delete {
+            background: #f56565;
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background: #e53e3e;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal h3 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            margin-top: 24px;
+        }
+
+        /* Toast Notifications */
+        .toast-container {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .toast {
+            background: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 300px;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .toast-success {
+            border-left: 4px solid #48bb78;
+        }
+
+        .toast-error {
+            border-left: 4px solid #f56565;
+        }
+
+        .toast-info {
+            border-left: 4px solid #4299e1;
+        }
+
+        .toast-message {
+            flex: 1;
+            color: #333;
+        }
+
+        .toast-close {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #999;
+        }
+
+        /* Loading Spinner */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.8);
+            z-index: 999;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loading-overlay.show {
+            display: flex;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        /* Drag and Drop */
+        .drag-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .drag-zone {
+            background: #f5f7fa;
+            border: 2px dashed #ccc;
+            border-radius: 12px;
+            padding: 24px;
+            min-height: 300px;
+        }
+
+        .drag-zone h4 {
+            margin-bottom: 16px;
+            color: #333;
+        }
+
+        .draggable-item {
+            background: white;
+            padding: 16px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            cursor: move;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s;
+        }
+
+        .draggable-item:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .draggable-item.dragging {
+            opacity: 0.5;
+        }
+
+        .drag-zone.drag-over {
+            background: #e8eaf0;
+            border-color: #667eea;
+        }
+
+        /* File Upload */
+        .file-upload-zone {
+            border: 2px dashed #ccc;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            background: #f5f7fa;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .file-upload-zone:hover {
+            border-color: #667eea;
+            background: #e8eaf0;
+        }
+
+        .file-upload-zone.dragover {
+            border-color: #667eea;
+            background: #e8eaf0;
+            transform: scale(1.02);
+        }
+
+        .file-list {
+            margin-top: 20px;
+        }
+
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+
+        /* Canvas */
+        .canvas-container {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 32px;
+        }
+
+        canvas {
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: crosshair;
+            display: block;
+        }
+
+        .color-picker {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+            align-items: center;
+        }
+
+        .color-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+
+        .color-option.active {
+            border-color: #333;
+        }
+
+        /* Iframe */
+        .iframe-container {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 32px;
+        }
+
+        .iframe-container iframe {
+            width: 100%;
+            height: 400px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+        }
+
+        /* Shadow DOM */
+        .shadow-host {
+            margin-bottom: 32px;
+        }
+
+        /* Infinite Scroll */
+        .scroll-container {
+            max-height: 500px;
+            overflow-y: auto;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .scroll-item {
+            padding: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .scroll-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Context Menu */
+        .context-menu {
+            display: none;
+            position: fixed;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            padding: 8px 0;
+            z-index: 1001;
+            min-width: 200px;
+        }
+
+        .context-menu.show {
+            display: block;
+        }
+
+        .context-menu-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .context-menu-item:hover {
+            background: #f5f7fa;
+        }
+
+        /* WebSocket Indicator */
+        .websocket-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .status-dot.connected {
+            background: #48bb78;
+        }
+
+        .status-dot.disconnected {
+            background: #f56565;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .message-feed {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+
+        .message-item {
+            padding: 8px 12px;
+            background: #f5f7fa;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        /* Keyboard Shortcuts */
+        .shortcuts-panel {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .shortcut-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .shortcut-row:last-child {
+            border-bottom: none;
+        }
+
+        .shortcut-key {
+            background: #f5f7fa;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-weight: 600;
+        }
+
+        /* Multi-window */
+        .popup-trigger {
+            margin-bottom: 20px;
+        }
+
+        /* Animation test */
+        .animated-box {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            margin: 20px 0;
+            transition: all 0.5s ease;
+        }
+
+        .animated-box.animate {
+            transform: translateX(300px) rotate(360deg);
+        }
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <h1>🔐 Sample App</h1>
+        <h1>🔐 Dashboard App</h1>
         <div class="user-info">
             <span class="user-name" data-testid="user-name" id="userName"></span>
             <button class="btn-logout" id="logoutBtn" data-testid="logout-button">Logout</button>
@@ -126,48 +819,978 @@
     </nav>
 
     <div class="container">
-        <div class="welcome-card">
-            <h2 id="welcomeMessage"></h2>
-            <p>You have successfully logged in to the sample application. This dashboard demonstrates a typical post-login experience.</p>
+        <div class="welcome-section">
+            <div class="welcome-card">
+                <h2 id="welcomeMessage"></h2>
+                <p>Comprehensive dashboard with forms, tables, modals, and interactive elements for testing.</p>
+            </div>
         </div>
 
-        <div class="stats-grid">
-            <div class="stat-card purple">
-                <h3>Projects</h3>
-                <div class="value">12</div>
+        <div class="tabs">
+            <button class="tab active" data-tab="overview" data-testid="tab-overview">Overview</button>
+            <button class="tab" data-tab="forms" data-testid="tab-forms">Forms</button>
+            <button class="tab" data-tab="table" data-testid="tab-table">Data Table</button>
+            <button class="tab" data-tab="components" data-testid="tab-components">Components</button>
+            <button class="tab" data-tab="advanced" data-testid="tab-advanced">Advanced</button>
+        </div>
+
+        <div class="tab-content">
+            <!-- Overview Tab -->
+            <div class="tab-panel active" data-panel="overview">
+                <div class="stats-grid">
+                    <div class="stat-card purple" data-testid="stat-projects">
+                        <h3>Projects</h3>
+                        <div class="value">12</div>
+                    </div>
+                    <div class="stat-card blue" data-testid="stat-tasks">
+                        <h3>Tasks</h3>
+                        <div class="value">48</div>
+                    </div>
+                    <div class="stat-card green" data-testid="stat-completed">
+                        <h3>Completed</h3>
+                        <div class="value">89%</div>
+                    </div>
+                    <div class="stat-card orange" data-testid="stat-team">
+                        <h3>Team Members</h3>
+                        <div class="value">8</div>
+                    </div>
+                </div>
             </div>
-            <div class="stat-card blue">
-                <h3>Tasks</h3>
-                <div class="value">48</div>
+
+            <!-- Forms Tab -->
+            <div class="tab-panel" data-panel="forms">
+                <div class="form-section">
+                    <h3 style="margin-bottom: 24px;">User Profile Form</h3>
+                    <form id="profileForm">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" data-testid="input-fullname" placeholder="John Doe" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" data-testid="input-email" placeholder="john@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="role">Role</label>
+                            <select id="role" data-testid="select-role">
+                                <option value="">Select a role</option>
+                                <option value="developer">Developer</option>
+                                <option value="designer">Designer</option>
+                                <option value="manager">Manager</option>
+                                <option value="analyst">Analyst</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="department">Department</label>
+                            <select id="department" data-testid="select-department">
+                                <option value="">Select a department</option>
+                                <option value="engineering">Engineering</option>
+                                <option value="design">Design</option>
+                                <option value="product">Product</option>
+                                <option value="sales">Sales</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bio">Bio</label>
+                            <textarea id="bio" data-testid="textarea-bio" placeholder="Tell us about yourself..."></textarea>
+                        </div>
+
+                        <div class="form-group checkbox">
+                            <input type="checkbox" id="notifications" data-testid="checkbox-notifications">
+                            <label for="notifications">Receive email notifications</label>
+                        </div>
+
+                        <div class="form-group checkbox">
+                            <input type="checkbox" id="newsletter" data-testid="checkbox-newsletter">
+                            <label for="newsletter">Subscribe to newsletter</label>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" data-testid="btn-save-profile">
+                                Save Profile
+                            </button>
+                            <button type="button" class="btn btn-secondary" data-testid="btn-cancel-profile">
+                                Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="stat-card green">
-                <h3>Completed</h3>
-                <div class="value">89%</div>
+
+            <!-- Table Tab -->
+            <div class="tab-panel" data-panel="table">
+                <div class="table-header">
+                    <h3>Tasks Management</h3>
+                    <input 
+                        type="text" 
+                        class="search-box" 
+                        id="searchBox" 
+                        data-testid="search-tasks"
+                        placeholder="Search tasks..."
+                    >
+                </div>
+                <div class="table-container">
+                    <table data-testid="tasks-table">
+                        <thead>
+                            <tr>
+                                <th class="sortable" data-sort="id" data-testid="sort-id">ID</th>
+                                <th class="sortable" data-sort="task" data-testid="sort-task">Task</th>
+                                <th class="sortable" data-sort="assignee" data-testid="sort-assignee">Assignee</th>
+                                <th class="sortable" data-sort="status" data-testid="sort-status">Status</th>
+                                <th data-testid="header-actions">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            <!-- Populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div class="stat-card orange">
-                <h3>Team Members</h3>
-                <div class="value">8</div>
+
+            <!-- Components Tab -->
+            <div class="tab-panel" data-panel="components">
+                <h3 style="margin-bottom: 24px;">Interactive Components</h3>
+                
+                <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 32px;">
+                    <button class="btn btn-primary" id="showModal" data-testid="btn-show-modal">
+                        Open Modal
+                    </button>
+                    <button class="btn btn-primary" id="showLoading" data-testid="btn-show-loading">
+                        Show Loading (3s)
+                    </button>
+                    <button class="btn btn-primary" id="showSuccess" data-testid="btn-toast-success">
+                        Success Toast
+                    </button>
+                    <button class="btn btn-primary" id="showError" data-testid="btn-toast-error">
+                        Error Toast
+                    </button>
+                    <button class="btn btn-primary" id="showInfo" data-testid="btn-toast-info">
+                        Info Toast
+                    </button>
+                </div>
+
+                <div class="form-section">
+                    <h4 style="margin-bottom: 16px;">Multi-Step Form Example</h4>
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <select id="country" data-testid="select-country">
+                            <option value="">Select a country</option>
+                            <option value="usa">United States</option>
+                            <option value="uk">United Kingdom</option>
+                            <option value="canada">Canada</option>
+                            <option value="australia">Australia</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <select id="city" data-testid="select-city" disabled>
+                            <option value="">Select a city</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Tab -->
+            <div class="tab-panel" data-panel="advanced">
+                <h3 style="margin-bottom: 24px;">Advanced UI Testing Scenarios</h3>
+
+                <!-- Drag and Drop -->
+                <h4 style="margin-bottom: 16px;">Drag and Drop</h4>
+                <div class="drag-container">
+                    <div class="drag-zone" id="sourceZone" data-testid="drag-source">
+                        <h4>Available Items</h4>
+                        <div class="draggable-item" draggable="true" data-id="1" data-testid="drag-item-1">
+                            📄 Document 1
+                        </div>
+                        <div class="draggable-item" draggable="true" data-id="2" data-testid="drag-item-2">
+                            📄 Document 2
+                        </div>
+                        <div class="draggable-item" draggable="true" data-id="3" data-testid="drag-item-3">
+                            📄 Document 3
+                        </div>
+                    </div>
+                    <div class="drag-zone" id="targetZone" data-testid="drag-target">
+                        <h4>Drop Here</h4>
+                    </div>
+                </div>
+
+                <!-- File Upload -->
+                <h4 style="margin-bottom: 16px;">File Upload</h4>
+                <div class="file-upload-zone" id="fileUploadZone" data-testid="file-upload-zone">
+                    <input type="file" id="fileInput" data-testid="file-input" multiple style="display: none;">
+                    <p>📁 Drag files here or click to browse</p>
+                    <p style="color: #999; font-size: 14px; margin-top: 8px;">Supports multiple files</p>
+                </div>
+                <div class="file-list" id="fileList" data-testid="file-list"></div>
+
+                <!-- Canvas Drawing -->
+                <h4 style="margin-top: 32px; margin-bottom: 16px;">Canvas Drawing</h4>
+                <div class="canvas-container">
+                    <canvas id="drawCanvas" width="800" height="400" data-testid="draw-canvas"></canvas>
+                    <div class="color-picker">
+                        <span>Color:</span>
+                        <div class="color-option active" data-color="#000000" data-testid="color-black" style="background: #000000;"></div>
+                        <div class="color-option" data-color="#667eea" data-testid="color-blue" style="background: #667eea;"></div>
+                        <div class="color-option" data-color="#f56565" data-testid="color-red" style="background: #f56565;"></div>
+                        <div class="color-option" data-color="#48bb78" data-testid="color-green" style="background: #48bb78;"></div>
+                        <div class="color-option" data-color="#ed8936" data-testid="color-orange" style="background: #ed8936;"></div>
+                        <button class="btn btn-secondary" id="clearCanvas" data-testid="btn-clear-canvas" style="margin-left: auto;">Clear</button>
+                    </div>
+                </div>
+
+                <!-- Iframe -->
+                <h4 style="margin-bottom: 16px;">Iframe Content</h4>
+                <div class="iframe-container">
+                    <iframe id="testIframe" data-testid="test-iframe" srcdoc="<!DOCTYPE html><html><head><style>body{font-family:sans-serif;padding:20px;background:#f5f7fa;}button{padding:10px 20px;background:#667eea;color:white;border:none;border-radius:6px;cursor:pointer;}</style></head><body><h2>Iframe Content</h2><p>This is content inside an iframe.</p><button onclick='alert(\"Button inside iframe clicked!\")'>Click Me</button></body></html>"></iframe>
+                </div>
+
+                <!-- Shadow DOM -->
+                <h4 style="margin-bottom: 16px;">Shadow DOM Component</h4>
+                <div class="shadow-host" id="shadowHost" data-testid="shadow-host">
+                    <!-- Shadow DOM will be attached here -->
+                </div>
+
+                <!-- WebSocket Simulation -->
+                <h4 style="margin-bottom: 16px;">Real-time Updates (Simulated WebSocket)</h4>
+                <div class="websocket-status" data-testid="websocket-status">
+                    <span class="status-dot connected" data-testid="status-indicator"></span>
+                    <span>Connection Status: <strong id="connectionStatus">Connected</strong></span>
+                </div>
+                <div class="message-feed" id="messageFeed" data-testid="message-feed">
+                    <p style="color: #999;">Messages will appear here...</p>
+                </div>
+                <button class="btn btn-primary" id="toggleConnection" data-testid="btn-toggle-connection">
+                    Disconnect
+                </button>
+
+                <!-- Keyboard Shortcuts -->
+                <h4 style="margin-top: 32px; margin-bottom: 16px;">Keyboard Shortcuts</h4>
+                <div class="shortcuts-panel" data-testid="shortcuts-panel">
+                    <div class="shortcut-row">
+                        <span>Save</span>
+                        <span class="shortcut-key">Ctrl + S</span>
+                    </div>
+                    <div class="shortcut-row">
+                        <span>New Item</span>
+                        <span class="shortcut-key">Ctrl + N</span>
+                    </div>
+                    <div class="shortcut-row">
+                        <span>Search</span>
+                        <span class="shortcut-key">Ctrl + F</span>
+                    </div>
+                    <div class="shortcut-row">
+                        <span>Delete</span>
+                        <span class="shortcut-key">Ctrl + D</span>
+                    </div>
+                </div>
+                <div id="shortcutFeedback" data-testid="shortcut-feedback" style="padding: 12px; background: #f5f7fa; border-radius: 8px; margin-top: 12px; display: none;">
+                    Last shortcut: <strong id="lastShortcut"></strong>
+                </div>
+
+                <!-- Multi-window -->
+                <h4 style="margin-top: 32px; margin-bottom: 16px;">Multi-window / Popup</h4>
+                <div class="popup-trigger">
+                    <button class="btn btn-primary" id="openPopup" data-testid="btn-open-popup">
+                        Open Popup Window
+                    </button>
+                </div>
+
+                <!-- Lazy Loading / Infinite Scroll -->
+                <h4 style="margin-bottom: 16px;">Infinite Scroll</h4>
+                <div class="scroll-container" id="scrollContainer" data-testid="scroll-container">
+                    <div id="scrollContent"></div>
+                    <div id="scrollLoader" style="text-align: center; padding: 20px; display: none;">
+                        <div class="loading"></div>
+                    </div>
+                </div>
+
+                <!-- Animation Test -->
+                <h4 style="margin-top: 32px; margin-bottom: 16px;">Complex Animations</h4>
+                <button class="btn btn-primary" id="triggerAnimation" data-testid="btn-trigger-animation">
+                    Trigger Animation
+                </button>
+                <div class="animated-box" id="animatedBox" data-testid="animated-box"></div>
+
+                <!-- Right-click Context Menu Area -->
+                <h4 style="margin-top: 32px; margin-bottom: 16px;">Context Menu (Right-click)</h4>
+                <div style="background: white; padding: 40px; border-radius: 12px; text-align: center;" id="contextArea" data-testid="context-area">
+                    Right-click anywhere in this area to see the context menu
+                </div>
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay" data-testid="modal-overlay">
+        <div class="modal" data-testid="modal">
+            <h3>Confirm Action</h3>
+            <p>Are you sure you want to proceed with this action?</p>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="modalCancel" data-testid="modal-cancel">
+                    Cancel
+                </button>
+                <button class="btn btn-primary" id="modalConfirm" data-testid="modal-confirm">
+                    Confirm
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Context Menu -->
+    <div class="context-menu" id="contextMenu" data-testid="context-menu">
+        <div class="context-menu-item" data-action="copy" data-testid="context-copy">Copy</div>
+        <div class="context-menu-item" data-action="paste" data-testid="context-paste">Paste</div>
+        <div class="context-menu-item" data-action="delete" data-testid="context-delete">Delete</div>
+        <div class="context-menu-item" data-action="refresh" data-testid="context-refresh">Refresh</div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay" data-testid="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer" data-testid="toast-container"></div>
 
     <script type="module">
         // Check if user is logged in
         const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
 
         if (!currentUser) {
-            // Redirect to login if no session
             window.location.href = 'index.html';
         } else {
-            // Display user info
             document.getElementById('userName').textContent = currentUser.name;
             document.getElementById('welcomeMessage').textContent = `Welcome back, ${currentUser.name}!`;
         }
 
-        // Logout functionality
+        // Logout
         document.getElementById('logoutBtn').addEventListener('click', () => {
             sessionStorage.removeItem('currentUser');
             window.location.href = 'index.html';
+        });
+
+        // Tab Switching
+        const tabs = document.querySelectorAll('.tab');
+        const panels = document.querySelectorAll('.tab-panel');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = tab.dataset.tab;
+                
+                tabs.forEach(t => t.classList.remove('active'));
+                panels.forEach(p => p.classList.remove('active'));
+                
+                tab.classList.add('active');
+                document.querySelector(`[data-panel="${target}"]`).classList.add('active');
+            });
+        });
+
+        // Form Handling
+        document.getElementById('profileForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            showToast('Profile saved successfully!', 'success');
+        });
+
+        document.querySelector('[data-testid="btn-cancel-profile"]').addEventListener('click', () => {
+            document.getElementById('profileForm').reset();
+            showToast('Form cancelled', 'info');
+        });
+
+        // Table Data
+        const tableData = [
+            { id: 1, task: 'Implement login feature', assignee: 'John Doe', status: 'active' },
+            { id: 2, task: 'Design dashboard mockups', assignee: 'Jane Smith', status: 'completed' },
+            { id: 3, task: 'Write API documentation', assignee: 'Bob Johnson', status: 'pending' },
+            { id: 4, task: 'Set up CI/CD pipeline', assignee: 'Alice Williams', status: 'active' },
+            { id: 5, task: 'Conduct user testing', assignee: 'Charlie Brown', status: 'pending' },
+            { id: 6, task: 'Optimize database queries', assignee: 'John Doe', status: 'completed' },
+            { id: 7, task: 'Create mobile responsive design', assignee: 'Jane Smith', status: 'active' },
+            { id: 8, task: 'Implement search functionality', assignee: 'Bob Johnson', status: 'pending' },
+        ];
+
+        let currentSort = { column: null, direction: 'asc' };
+        let filteredData = [...tableData];
+
+        function renderTable(data) {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = data.map(row => `
+                <tr data-testid="task-row-${row.id}">
+                    <td>${row.id}</td>
+                    <td>${row.task}</td>
+                    <td>${row.assignee}</td>
+                    <td>
+                        <span class="status-badge status-${row.status}" data-testid="status-${row.id}">
+                            ${row.status}
+                        </span>
+                    </td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn-icon btn-edit" data-testid="btn-edit-${row.id}">Edit</button>
+                            <button class="btn-icon btn-delete" data-testid="btn-delete-${row.id}">Delete</button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+
+            // Add event listeners to action buttons
+            data.forEach(row => {
+                document.querySelector(`[data-testid="btn-edit-${row.id}"]`).addEventListener('click', () => {
+                    showToast(`Editing task: ${row.task}`, 'info');
+                });
+                document.querySelector(`[data-testid="btn-delete-${row.id}"]`).addEventListener('click', () => {
+                    showToast(`Deleted task: ${row.task}`, 'error');
+                });
+            });
+        }
+
+        // Search
+        document.getElementById('searchBox').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            filteredData = tableData.filter(row => 
+                row.task.toLowerCase().includes(query) ||
+                row.assignee.toLowerCase().includes(query) ||
+                row.status.toLowerCase().includes(query)
+            );
+            renderTable(filteredData);
+        });
+
+        // Sorting
+        document.querySelectorAll('th.sortable').forEach(th => {
+            th.addEventListener('click', () => {
+                const column = th.dataset.sort;
+                
+                if (currentSort.column === column) {
+                    currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+                } else {
+                    currentSort.column = column;
+                    currentSort.direction = 'asc';
+                }
+
+                document.querySelectorAll('th.sortable').forEach(h => {
+                    h.classList.remove('sort-asc', 'sort-desc');
+                });
+                th.classList.add(`sort-${currentSort.direction}`);
+
+                filteredData.sort((a, b) => {
+                    let aVal = a[column];
+                    let bVal = b[column];
+                    
+                    if (currentSort.direction === 'asc') {
+                        return aVal > bVal ? 1 : -1;
+                    } else {
+                        return aVal < bVal ? 1 : -1;
+                    }
+                });
+
+                renderTable(filteredData);
+            });
+        });
+
+        renderTable(filteredData);
+
+        // Modal
+        document.getElementById('showModal').addEventListener('click', () => {
+            document.getElementById('modalOverlay').classList.add('show');
+        });
+
+        document.getElementById('modalCancel').addEventListener('click', () => {
+            document.getElementById('modalOverlay').classList.remove('show');
+            showToast('Action cancelled', 'info');
+        });
+
+        document.getElementById('modalConfirm').addEventListener('click', () => {
+            document.getElementById('modalOverlay').classList.remove('show');
+            showToast('Action confirmed', 'success');
+        });
+
+        document.getElementById('modalOverlay').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                document.getElementById('modalOverlay').classList.remove('show');
+            }
+        });
+
+        // Loading
+        document.getElementById('showLoading').addEventListener('click', () => {
+            const overlay = document.getElementById('loadingOverlay');
+            overlay.classList.add('show');
+            setTimeout(() => {
+                overlay.classList.remove('show');
+                showToast('Loading complete!', 'success');
+            }, 3000);
+        });
+
+        // Toast Notifications
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            toast.setAttribute('data-testid', `toast-${type}`);
+            toast.innerHTML = `
+                <div class="toast-message">${message}</div>
+                <button class="toast-close" data-testid="toast-close">×</button>
+            `;
+            
+            container.appendChild(toast);
+
+            toast.querySelector('.toast-close').addEventListener('click', () => {
+                toast.remove();
+            });
+
+            setTimeout(() => {
+                toast.remove();
+            }, 5000);
+        }
+
+        document.getElementById('showSuccess').addEventListener('click', () => {
+            showToast('Operation completed successfully!', 'success');
+        });
+
+        document.getElementById('showError').addEventListener('click', () => {
+            showToast('An error occurred. Please try again.', 'error');
+        });
+
+        document.getElementById('showInfo').addEventListener('click', () => {
+            showToast('This is an informational message.', 'info');
+        });
+
+        // Dependent Dropdowns
+        const cities = {
+            usa: ['New York', 'Los Angeles', 'Chicago', 'Houston'],
+            uk: ['London', 'Manchester', 'Birmingham', 'Edinburgh'],
+            canada: ['Toronto', 'Vancouver', 'Montreal', 'Calgary'],
+            australia: ['Sydney', 'Melbourne', 'Brisbane', 'Perth']
+        };
+
+        document.getElementById('country').addEventListener('change', (e) => {
+            const citySelect = document.getElementById('city');
+            const country = e.target.value;
+
+            citySelect.innerHTML = '<option value="">Select a city</option>';
+            
+            if (country && cities[country]) {
+                citySelect.disabled = false;
+                cities[country].forEach(city => {
+                    const option = document.createElement('option');
+                    option.value = city.toLowerCase().replace(' ', '-');
+                    option.textContent = city;
+                    citySelect.appendChild(option);
+                });
+            } else {
+                citySelect.disabled = true;
+            }
+        });
+
+        // ===== ADVANCED TAB FEATURES =====
+
+        // Drag and Drop
+        let draggedElement = null;
+
+        document.querySelectorAll('.draggable-item').forEach(item => {
+            item.addEventListener('dragstart', (e) => {
+                draggedElement = e.target;
+                e.target.classList.add('dragging');
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/html', e.target.innerHTML);
+            });
+
+            item.addEventListener('dragend', (e) => {
+                e.target.classList.remove('dragging');
+            });
+        });
+
+        [document.getElementById('sourceZone'), document.getElementById('targetZone')].forEach(zone => {
+            zone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                e.dataTransfer.dropEffect = 'move';
+                zone.classList.add('drag-over');
+            });
+
+            zone.addEventListener('dragleave', () => {
+                zone.classList.remove('drag-over');
+            });
+
+            zone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                zone.classList.remove('drag-over');
+                if (draggedElement) {
+                    zone.appendChild(draggedElement);
+                    showToast('Item moved successfully!', 'success');
+                }
+            });
+        });
+
+        // File Upload
+        const fileUploadZone = document.getElementById('fileUploadZone');
+        const fileInput = document.getElementById('fileInput');
+        const fileList = document.getElementById('fileList');
+
+        fileUploadZone.addEventListener('click', () => fileInput.click());
+
+        fileUploadZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            fileUploadZone.classList.add('dragover');
+        });
+
+        fileUploadZone.addEventListener('dragleave', () => {
+            fileUploadZone.classList.remove('dragover');
+        });
+
+        fileUploadZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            fileUploadZone.classList.remove('dragover');
+            handleFiles(e.dataTransfer.files);
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+
+        function handleFiles(files) {
+            fileList.innerHTML = '';
+            Array.from(files).forEach((file, index) => {
+                const fileItem = document.createElement('div');
+                fileItem.className = 'file-item';
+                fileItem.setAttribute('data-testid', `file-item-${index}`);
+                fileItem.innerHTML = `
+                    <span>📎 ${file.name} (${(file.size / 1024).toFixed(2)} KB)</span>
+                    <button class="btn-icon btn-delete" data-testid="btn-remove-file-${index}">Remove</button>
+                `;
+                fileList.appendChild(fileItem);
+
+                fileItem.querySelector('button').addEventListener('click', () => {
+                    fileItem.remove();
+                    showToast(`Removed ${file.name}`, 'info');
+                });
+            });
+            showToast(`${files.length} file(s) uploaded`, 'success');
+        }
+
+        // Canvas Drawing
+        const canvas = document.getElementById('drawCanvas');
+        const ctx = canvas.getContext('2d');
+        let isDrawing = false;
+        let currentColor = '#000000';
+
+        canvas.addEventListener('mousedown', (e) => {
+            isDrawing = true;
+            ctx.beginPath();
+            ctx.moveTo(e.offsetX, e.offsetY);
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (isDrawing) {
+                ctx.lineTo(e.offsetX, e.offsetY);
+                ctx.strokeStyle = currentColor;
+                ctx.lineWidth = 3;
+                ctx.lineCap = 'round';
+                ctx.stroke();
+            }
+        });
+
+        canvas.addEventListener('mouseup', () => {
+            isDrawing = false;
+        });
+
+        canvas.addEventListener('mouseleave', () => {
+            isDrawing = false;
+        });
+
+        document.querySelectorAll('.color-option').forEach(option => {
+            option.addEventListener('click', () => {
+                document.querySelectorAll('.color-option').forEach(o => o.classList.remove('active'));
+                option.classList.add('active');
+                currentColor = option.dataset.color;
+            });
+        });
+
+        document.getElementById('clearCanvas').addEventListener('click', () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            showToast('Canvas cleared', 'info');
+        });
+
+        // Shadow DOM
+        const shadowHost = document.getElementById('shadowHost');
+        const shadowRoot = shadowHost.attachShadow({ mode: 'open' });
+        shadowRoot.innerHTML = `
+            <style>
+                .shadow-content {
+                    background: white;
+                    padding: 24px;
+                    border-radius: 12px;
+                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                }
+                button {
+                    padding: 10px 20px;
+                    background: #667eea;
+                    color: white;
+                    border: none;
+                    border-radius: 6px;
+                    cursor: pointer;
+                    font-weight: 500;
+                }
+                button:hover {
+                    background: #5568d3;
+                }
+            </style>
+            <div class="shadow-content" data-testid="shadow-content">
+                <h4>Shadow DOM Component</h4>
+                <p>This content is encapsulated in Shadow DOM.</p>
+                <button id="shadowButton" data-testid="shadow-button">Click Shadow Button</button>
+                <p id="shadowMessage" data-testid="shadow-message" style="margin-top: 12px; color: #666;"></p>
+            </div>
+        `;
+
+        shadowRoot.getElementById('shadowButton').addEventListener('click', () => {
+            shadowRoot.getElementById('shadowMessage').textContent = 'Shadow DOM button clicked!';
+        });
+
+        // WebSocket Simulation
+        let wsConnected = true;
+        let messageInterval;
+
+        function startMessageStream() {
+            const messages = [
+                'New order received',
+                'Payment processed',
+                'User logged in',
+                'Data sync completed',
+                'Task assigned',
+                'Report generated'
+            ];
+
+            messageInterval = setInterval(() => {
+                if (wsConnected) {
+                    const feed = document.getElementById('messageFeed');
+                    const msg = document.createElement('div');
+                    msg.className = 'message-item';
+                    msg.setAttribute('data-testid', 'message-item');
+                    msg.textContent = `[${new Date().toLocaleTimeString()}] ${messages[Math.floor(Math.random() * messages.length)]}`;
+                    feed.insertBefore(msg, feed.firstChild);
+
+                    // Keep only last 10 messages
+                    while (feed.children.length > 10) {
+                        feed.removeChild(feed.lastChild);
+                    }
+                }
+            }, 3000);
+        }
+
+        document.getElementById('toggleConnection').addEventListener('click', () => {
+            wsConnected = !wsConnected;
+            const statusDot = document.querySelector('[data-testid="status-indicator"]');
+            const statusText = document.getElementById('connectionStatus');
+            const btn = document.getElementById('toggleConnection');
+
+            if (wsConnected) {
+                statusDot.classList.remove('disconnected');
+                statusDot.classList.add('connected');
+                statusText.textContent = 'Connected';
+                btn.textContent = 'Disconnect';
+                showToast('WebSocket connected', 'success');
+            } else {
+                statusDot.classList.remove('connected');
+                statusDot.classList.add('disconnected');
+                statusText.textContent = 'Disconnected';
+                btn.textContent = 'Connect';
+                showToast('WebSocket disconnected', 'error');
+            }
+        });
+
+        startMessageStream();
+
+        // Keyboard Shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                const feedback = document.getElementById('shortcutFeedback');
+                const lastShortcut = document.getElementById('lastShortcut');
+                
+                let action = '';
+                switch(e.key.toLowerCase()) {
+                    case 's':
+                        e.preventDefault();
+                        action = 'Save';
+                        showToast('Save shortcut triggered', 'info');
+                        break;
+                    case 'n':
+                        e.preventDefault();
+                        action = 'New Item';
+                        showToast('New Item shortcut triggered', 'info');
+                        break;
+                    case 'f':
+                        e.preventDefault();
+                        action = 'Search';
+                        showToast('Search shortcut triggered', 'info');
+                        break;
+                    case 'd':
+                        e.preventDefault();
+                        action = 'Delete';
+                        showToast('Delete shortcut triggered', 'info');
+                        break;
+                }
+
+                if (action) {
+                    lastShortcut.textContent = action;
+                    feedback.style.display = 'block';
+                }
+            }
+        });
+
+        // Popup Window
+        document.getElementById('openPopup').addEventListener('click', () => {
+            const popup = window.open(
+                'about:blank',
+                'TestPopup',
+                'width=500,height=400'
+            );
+            popup.document.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Popup Window</title>
+                    <style>
+                        body {
+                            font-family: sans-serif;
+                            padding: 40px;
+                            background: #f5f7fa;
+                        }
+                        h2 { color: #667eea; }
+                        button {
+                            padding: 10px 20px;
+                            background: #667eea;
+                            color: white;
+                            border: none;
+                            border-radius: 6px;
+                            cursor: pointer;
+                            font-weight: 500;
+                            margin-top: 20px;
+                        }
+                        button:hover {
+                            background: #5568d3;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <h2>Popup Window</h2>
+                    <p>This is a child window opened via window.open().</p>
+                    <p id="message" data-testid="popup-message">Ready for testing!</p>
+                    <button onclick="document.getElementById('message').textContent = 'Button clicked in popup!'; window.opener.postMessage('popup-clicked', '*');" data-testid="popup-button">
+                        Click Me
+                    </button>
+                    <button onclick="window.close()" data-testid="popup-close" style="background: #f56565; margin-left: 10px;">
+                        Close
+                    </button>
+                </body>
+                </html>
+            `);
+
+            window.addEventListener('message', (e) => {
+                if (e.data === 'popup-clicked') {
+                    showToast('Message received from popup window!', 'success');
+                }
+            });
+        });
+
+        // Infinite Scroll
+        let scrollPage = 1;
+        const scrollContent = document.getElementById('scrollContent');
+        const scrollLoader = document.getElementById('scrollLoader');
+        const scrollContainer = document.getElementById('scrollContainer');
+
+        function loadMoreItems() {
+            scrollLoader.style.display = 'block';
+
+            setTimeout(() => {
+                for (let i = 1; i <= 10; i++) {
+                    const item = document.createElement('div');
+                    item.className = 'scroll-item';
+                    item.setAttribute('data-testid', `scroll-item-${(scrollPage - 1) * 10 + i}`);
+                    item.innerHTML = `
+                        <strong>Item ${(scrollPage - 1) * 10 + i}</strong>
+                        <p>This is dynamically loaded content. Scroll down to load more items.</p>
+                    `;
+                    scrollContent.appendChild(item);
+                }
+                scrollLoader.style.display = 'none';
+                scrollPage++;
+            }, 1000);
+        }
+
+        // Initial load
+        loadMoreItems();
+
+        scrollContainer.addEventListener('scroll', () => {
+            if (scrollContainer.scrollTop + scrollContainer.clientHeight >= scrollContainer.scrollHeight - 50) {
+                if (scrollLoader.style.display === 'none' && scrollPage <= 5) {
+                    loadMoreItems();
+                }
+            }
+        });
+
+        // Animation
+        document.getElementById('triggerAnimation').addEventListener('click', () => {
+            const box = document.getElementById('animatedBox');
+            box.classList.toggle('animate');
+            setTimeout(() => {
+                showToast('Animation completed!', 'success');
+            }, 500);
+        });
+
+        // Context Menu
+        const contextArea = document.getElementById('contextArea');
+        const contextMenu = document.getElementById('contextMenu');
+
+        contextArea.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Show menu first to get dimensions
+            contextMenu.classList.add('show');
+            
+            const menuRect = contextMenu.getBoundingClientRect();
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+            
+            // Use clientX/clientY for fixed positioning
+            let x = e.clientX;
+            let y = e.clientY;
+            
+            // Adjust if menu would go off right edge
+            if (x + menuRect.width > viewportWidth) {
+                x = viewportWidth - menuRect.width - 10;
+            }
+            
+            // Adjust if menu would go off bottom edge
+            if (y + menuRect.height > viewportHeight) {
+                y = viewportHeight - menuRect.height - 10;
+            }
+            
+            contextMenu.style.left = x + 'px';
+            contextMenu.style.top = y + 'px';
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!contextMenu.contains(e.target)) {
+                contextMenu.classList.remove('show');
+            }
+        });
+
+        document.addEventListener('contextmenu', (e) => {
+            if (!contextArea.contains(e.target)) {
+                contextMenu.classList.remove('show');
+            }
+        });
+
+        document.querySelectorAll('.context-menu-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const action = item.dataset.action;
+                showToast(`Context menu action: ${action}`, 'info');
+                contextMenu.classList.remove('show');
+            });
         });
     </script>
 </body>
