@@ -31,3 +31,5 @@ npm-debug.log*
 
 # Vizwright config (user-specific)
 .vizwrightrc
+
+tests/scratch/

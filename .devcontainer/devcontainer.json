@@ -45,7 +45,9 @@
   ],
   "remoteEnv": {
     "PROJECT_ROOT": "${containerWorkspaceFolder}",
-    "PATH": "${containerWorkspaceFolder}/code/cli/dist:${containerEnv:PATH}"
+    "PATH": "${containerWorkspaceFolder}/code/cli/dist:${containerEnv:PATH}",
+    "VIZWRIGHT_SERVER_PORT": "3101",
+    "VIZWRIGHT_UI_PORT": "3102"
   },
   "portsAttributes": {
     "3000": {

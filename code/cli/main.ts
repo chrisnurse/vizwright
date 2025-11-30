@@ -1,7 +1,7 @@
 #!/usr/bin/env -S deno run --allow-all
 /**
  * Vizwright CLI
- * 
+ *
  * Usage:
  *   vw check    - Check connection to backend server
  *   vw help     - Show help
@@ -13,7 +13,7 @@ import { checkCommand } from "./commands/check.ts";
 const VERSION = "0.1.0";
 
 function printHelp(): void {
-    console.log(`
+  console.log(`
 ╭─────────────────────────────────────╮
 │         Vizwright CLI v${VERSION}         │
 ╰─────────────────────────────────────╯
@@ -40,48 +40,48 @@ Examples:
 }
 
 function printVersion(): void {
-    console.log(`vw v${VERSION}`);
+  console.log(`vw v${VERSION}`);
 }
 
 async function main(): Promise<void> {
-    const args = parseArgs(Deno.args, {
-        boolean: ["help", "version"],
-        alias: { h: "help", v: "version" },
-    });
+  const args = parseArgs(Deno.args, {
+    boolean: ["help", "version"],
+    alias: { h: "help", v: "version" },
+  });
 
-    // Handle flags
-    if (args.version) {
-        printVersion();
-        return;
-    }
+  // Handle flags
+  if (args.version) {
+    printVersion();
+    return;
+  }
 
-    if (args.help || args._.length === 0) {
-        printHelp();
-        return;
-    }
+  if (args.help || args._.length === 0) {
+    printHelp();
+    return;
+  }
 
-    // Get command
-    const command = String(args._[0]);
+  // Get command
+  const command = String(args._[0]);
 
-    switch (command) {
-        case "check":
-            await checkCommand();
-            break;
+  switch (command) {
+    case "check":
+      await checkCommand();
+      break;
 
-        case "help":
-            printHelp();
-            break;
+    case "help":
+      printHelp();
+      break;
 
-        case "version":
-            printVersion();
-            break;
+    case "version":
+      printVersion();
+      break;
 
-        default:
-            console.error(`❌ Unknown command: ${command}`);
-            console.error();
-            console.error("Run 'vw help' for usage information.");
-            Deno.exit(1);
-    }
+    default:
+      console.error(`❌ Unknown command: ${command}`);
+      console.error();
+      console.error("Run 'vw help' for usage information.");
+      Deno.exit(1);
+  }
 }
 
 main();

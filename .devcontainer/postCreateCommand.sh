@@ -3,12 +3,7 @@
 echo "🚀 Running post create actions..."
 
 echo "📦 Installing dependencies..."
-cd "${PROJECT_ROOT}"
-deno task install
-
-echo "🔨 Building CLI..."
-cd "${PROJECT_ROOT}/code/cli"
-deno task build
+"${PROJECT_ROOT}/code/scripts/install.sh"
 
 echo "⚙️ Setting up CLI config..."
 if [ ! -f ~/.vizwrightrc ]; then

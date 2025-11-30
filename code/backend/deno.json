@@ -1,13 +1,13 @@
 {
-    "name": "@vizwright/backend",
-    "exports": "./main.ts",
-    "imports": {
-        "hono": "npm:hono@^4",
-        "@hono/zod-validator": "npm:@hono/zod-validator@^0.4",
-        "@sinclair/typebox": "npm:@sinclair/typebox@^0.34"
-    },
-    "tasks": {
-        "dev": "deno run --watch --allow-all main.ts",
-        "build": "deno compile --allow-all --output dist/vizwright main.ts"
-    }
+  "name": "@vizwright/backend",
+  "exports": "./main.ts",
+  "imports": {
+    "hono": "npm:hono@^4",
+    "@hono/zod-validator": "npm:@hono/zod-validator@^0.4",
+    "@sinclair/typebox": "npm:@sinclair/typebox@^0.34"
+  },
+  "tasks": {
+    "dev": "deno run --watch --allow-all main.ts",
+    "build": "deno compile --allow-all --output dist/vizwright main.ts"
+  }
 }

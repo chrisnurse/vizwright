@@ -35,14 +35,15 @@
         "@hono/zod-validator": "npm:@hono/zod-validator@^0.4"
     },
     "tasks": {
-        "go": "./code/scripts/go.sh",
-        "clear-logs": "deno run --allow-all code/scripts/clear-logs.ts",
-        "dev:frontend": "cd code/frontend && deno task dev",
-        "dev:backend": "cd code/backend && deno task dev",
-        "dev:cli": "cd code/cli && deno task dev",
-        "build:frontend": "cd code/frontend && deno task build",
-        "build:backend": "cd code/backend && deno task build",
-        "build:cli": "cd code/cli && deno task build",
-        "install": "deno install --allow-scripts"
+        "a-go": "./code/scripts/go.sh",
+        "c-clear-logs": "./code/scripts/clear-logs.sh",
+        "b-check-code": "./code/scripts/audit-and-lint.sh",
+        "f-dev:frontend": "cd code/frontend && deno task dev",
+        "f-dev:backend": "cd code/backend && deno task dev",
+        "f-dev:cli": "cd code/cli && deno task dev",
+        "z-build:frontend": "cd code/frontend && deno task build",
+        "z-build:backend": "cd code/backend && deno task build",
+        "d-cli-build": "cd code/cli && deno task build",
+        "e-install": "./code/scripts/install.sh"
     }
 }

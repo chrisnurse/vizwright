@@ -17,7 +17,7 @@ app.route("/api", api);
 // START SERVER
 // ============================================
 
-const port = 3000;
+const port = Config.ServerPort;
 console.log(`🚀 Vizwright API starting on http://localhost:${port}`);
 console.log(`📁 Project root: ${Config.ProjectRoot}`);
 
