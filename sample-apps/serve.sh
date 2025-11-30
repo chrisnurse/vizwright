@@ -1,23 +1,21 @@
 #!/bin/bash
 #
-# serve.sh - Serve a sample app on a local port
+# serve.sh - Serve a sample app on the configured port
 #
-# Usage: ./serve.sh [app-name] [port] [--notest]
-# Example: ./serve.sh dashboard 8080
-#          ./serve.sh dashboard 8080 --notest
+# Usage: ./serve.sh [app-name] [--notest]
+# Example: ./serve.sh dashboard
+#          ./serve.sh dashboard --notest
+#
+# Port is determined by VIZWRIGHT_SAMPLE_APP_PORT environment variable (default: 8080)
 #
 
-SAMPLE_APP=${1:-login}
-PORT=${2:-8080}
+SAMPLE_APP=${1:-dashboard}
+PORT=${VIZWRIGHT_SAMPLE_APP_PORT:-8080}
 NO_TEST_IDS=false
 
 # Check for --notest flag
-if [[ "$3" == "--notest" ]] || [[ "$2" == "--notest" ]]; then
+if [[ "$2" == "--notest" ]]; then
   NO_TEST_IDS=true
-  # If --notest is in position 2, use default port
-  if [[ "$2" == "--notest" ]]; then
-    PORT=8080
-  fi
 fi
 
 SAMPLE_DIR="${PROJECT_ROOT}/sample-apps/${SAMPLE_APP}"
@@ -40,6 +38,16 @@ else
   echo "🏷️  Mode: WITH data-testid attributes (easy mode)"
 fi
 echo ""
+
+# Kill any process using the target port
+echo "🔍 Checking for processes on port ${PORT}..."
+PID=$(lsof -ti:${PORT} 2>/dev/null)
+if [ ! -z "$PID" ]; then
+  echo "⚠️  Found process ${PID} on port ${PORT}, stopping it..."
+  kill -9 $PID 2>/dev/null
+  sleep 1
+fi
+
 echo "Press Ctrl+C to stop"
 echo ""
 

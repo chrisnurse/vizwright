@@ -1,0 +1,63 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - navigation [ref=e2]:
+    - heading "🔐 Dashboard App" [level=1] [ref=e3]
+    - generic [ref=e4]:
+      - generic [ref=e5]: Regular User
+      - button "Logout" [ref=e6] [cursor=pointer]
+  - generic [ref=e7]:
+    - generic [ref=e9]:
+      - heading "Welcome back, Regular User!" [level=2] [ref=e10]
+      - paragraph [ref=e11]: Comprehensive dashboard with forms, tables, modals, and interactive elements for testing.
+    - generic [ref=e12]:
+      - button "Overview" [ref=e13] [cursor=pointer]
+      - button "Forms" [ref=e14] [cursor=pointer]
+      - button "Data Table" [ref=e15] [cursor=pointer]
+      - button "Components" [ref=e16] [cursor=pointer]
+      - button "Advanced" [ref=e17] [cursor=pointer]
+    - generic [ref=e18]:
+      - generic [ref=e20]:
+        - heading "User Profile Form" [level=3] [ref=e21]
+        - generic [ref=e22]:
+          - generic [ref=e23]:
+            - generic [ref=e24]: Full Name
+            - textbox "Full Name" [ref=e25]:
+              - /placeholder: John Doe
+              - text: John Doe
+          - generic [ref=e26]:
+            - generic [ref=e27]: Email
+            - textbox "Email" [ref=e28]:
+              - /placeholder: john@example.com
+          - generic [ref=e29]:
+            - generic [ref=e30]: Role
+            - combobox "Role" [ref=e31]:
+              - option "Select a role" [selected]
+              - option "Developer"
+              - option "Designer"
+              - option "Manager"
+              - option "Analyst"
+          - generic [ref=e32]:
+            - generic [ref=e33]: Department
+            - combobox "Department" [ref=e34]:
+              - option "Select a department" [selected]
+              - option "Engineering"
+              - option "Design"
+              - option "Product"
+              - option "Sales"
+          - generic [ref=e35]:
+            - generic [ref=e36]: Bio
+            - textbox "Bio" [ref=e37]:
+              - /placeholder: Tell us about yourself...
+          - generic [ref=e38]:
+            - checkbox "Receive email notifications" [ref=e39]
+            - generic [ref=e40]: Receive email notifications
+          - generic [ref=e41]:
+            - checkbox "Subscribe to newsletter" [ref=e42]
+            - generic [ref=e43]: Subscribe to newsletter
+          - generic [ref=e44]:
+            - button "Save Profile" [ref=e45] [cursor=pointer]
+            - button "Cancel" [active] [ref=e46] [cursor=pointer]
+      - text: ↕ ↕ ↕ ↕
+```

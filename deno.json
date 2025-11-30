@@ -36,7 +36,8 @@
     },
     "tasks": {
         "a-go": "./code/scripts/go.sh",
-        "aa-sample": "./sample-apps/serve.sh dashboard",
+        "aa-sample-testid": "./sample-apps/serve.sh dashboard",
+        "aa-sample-notestid": "./sample-apps/serve.sh dashboard --notest",
         "c-clear-logs": "./code/scripts/clear-logs.sh",
         "b-check-code": "./code/scripts/audit-and-lint.sh",
         "f-dev:frontend": "cd code/frontend && deno task dev",

@@ -1,0 +1,5 @@
+{
+  "imports": {
+    "@playwright/test": "npm:@playwright/test@latest"
+  }
+}

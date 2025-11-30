@@ -1,0 +1,44 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - navigation [ref=e2]:
+    - heading "🔐 Dashboard App" [level=1] [ref=e3]
+    - generic [ref=e4]:
+      - generic [ref=e5]: Regular User
+      - button "Logout" [ref=e6] [cursor=pointer]
+  - generic [ref=e7]:
+    - generic [ref=e9]:
+      - heading "Welcome back, Regular User!" [level=2] [ref=e10]
+      - paragraph [ref=e11]: Comprehensive dashboard with forms, tables, modals, and interactive elements for testing.
+    - generic [ref=e12]:
+      - button "Overview" [ref=e13] [cursor=pointer]
+      - button "Forms" [ref=e14] [cursor=pointer]
+      - button "Data Table" [ref=e15] [cursor=pointer]
+      - button "Components" [active] [ref=e16] [cursor=pointer]
+      - button "Advanced" [ref=e17] [cursor=pointer]
+    - generic [ref=e18]:
+      - text: ↕ ↕ ↕ ↕
+      - generic [ref=e19]:
+        - heading "Interactive Components" [level=3] [ref=e20]
+        - generic [ref=e21]:
+          - button "Open Modal" [ref=e22] [cursor=pointer]
+          - button "Show Loading (3s)" [ref=e23] [cursor=pointer]
+          - button "Success Toast" [ref=e24] [cursor=pointer]
+          - button "Error Toast" [ref=e25] [cursor=pointer]
+          - button "Info Toast" [ref=e26] [cursor=pointer]
+        - generic [ref=e27]:
+          - heading "Multi-Step Form Example" [level=4] [ref=e28]
+          - generic [ref=e29]:
+            - generic [ref=e30]: Country
+            - combobox "Country" [ref=e31]:
+              - option "Select a country" [selected]
+              - option "United States"
+              - option "United Kingdom"
+              - option "Canada"
+              - option "Australia"
+          - generic [ref=e32]:
+            - generic [ref=e33]: City
+            - combobox "City" [disabled] [ref=e34]:
+              - option "Select a city" [selected]
+```

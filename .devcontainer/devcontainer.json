@@ -47,7 +47,8 @@
     "PROJECT_ROOT": "${containerWorkspaceFolder}",
     "PATH": "${containerWorkspaceFolder}/code/cli/dist:${containerEnv:PATH}",
     "VIZWRIGHT_SERVER_PORT": "3101",
-    "VIZWRIGHT_UI_PORT": "3102"
+    "VIZWRIGHT_UI_PORT": "3102",
+    "VIZWRIGHT_SAMPLE_APP_PORT": "8080"
   },
   "portsAttributes": {
     "3000": {

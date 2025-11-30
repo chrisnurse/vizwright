@@ -1,0 +1,8 @@
+{
+    "name": "vizwright-pw-baseline",
+    "version": "1.0.0",
+    "description": "Playwright baseline tests for Vizwright sample app using data-testid selectors",
+    "dependencies": {
+        "@playwright/test": "^1.57.0"
+    }
+}
